@@ -10,7 +10,15 @@ Jupyter notebooks used to generate final figures for the paper.
 1. `01-map-generation.ipynb` - contains code for creating the map of the isolation locations of the strains of _G huxleyi_ included in the study
 2. `02-ehux-save.ipynb` - contains code for creating side scatter plots for supplemental figures and for performing thermal performance curve fitting
 3. `02-ehux-vital-rates.ipynb` - contains code for thermal performance curve fitting and for all parts of Figure 2
-4. `
+4. `02-anderson_compare.ipynb` - code for comparing generated data to Anderson et al. (2021) and van Dassow et al. (2021) and generating supplementary figures
+5. `03-new-darwin_maps-main-fig.ipynb` - code for creating main text figure 3
 
 ### `final-statistics-notebooks`
 1. 
+
+
+## Directory: `data`
+Data tables useful for running code, including supplementary data tables included with submitted paper.
+
+1. `00-ehux-all-strains.csv` - metadata associated with _G huxleyi_ strains
+2. `01-concentration-table.csv` - daily cell (cells/mL) concentration of _G huxleyi_ cells
