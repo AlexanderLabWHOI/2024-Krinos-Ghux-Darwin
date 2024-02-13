@@ -12,12 +12,10 @@ Jupyter notebooks used to generate final figures for the paper.
 4. `02-anderson_compare.ipynb` - code for comparing generated data to Anderson et al. (2021) and van Dassow et al. (2021) and generating supplementary figures
 5. `03-new-darwin_maps-main-fig.ipynb` - code for creating main text figure 3 & supplementary figures that show generalist-specialist vs. specialist-only scenarios
 6. `XX-new-darwin_maps-mostconserv-static-generalist.ipynb` - code for assorted supplementary figures related to Darwin model simulations, especially generalist-only vs. specialist-only
-
-### `final-statistics-notebooks`
-1. 
+7. `XX-darwin-no-v-large-penalty.ipynb` - code to compare the 3 penalty levels for the generalist-specialist simulation as shown in supplementary figure 4
 
 ### `darwin-processing-scripts`
-Code for processing Darwin model simulation results outside of Jupyter notebooks
+Code for processing Darwin model simulation results outside of Jupyter notebooks. Referenced in Darwin simulation Jupyter notebooks above.
 
 ## Directory: `data`
 Data tables useful for running code, including supplementary data tables included with submitted paper.
