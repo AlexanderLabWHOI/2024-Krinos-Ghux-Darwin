@@ -12,7 +12,7 @@ import matplotlib.pyplot as plt
 import matplotlib
 np.float = float 
 
-OUTPUTDIR="compare_plots_fixed_het_generalist"
+OUTPUTDIR="compare_plots_fixed_het_generalist_16July"
 os.system("mkdir -p "+OUTPUTDIR)
 staticwidthsdir="/proj/omics/alexander/akrinos/2023-Krinos-Ghux-Darwin/data/Darwin_Simulations/StaticWidths_FixedHet_MostConservative_Generalist"
 morewidthsdir="/proj/omics/alexander/akrinos/2023-Krinos-Ghux-Darwin/data/Darwin_Simulations/ModWidths_FixedHet_MostConservative"
@@ -89,11 +89,13 @@ merged_two=all_all_depths_ModWidths_ConRange_MoreWidths.\
     merge(small_static,left_on=["Time","Latitude","Longitude"],
           right_on=["Time","Latitude","Longitude"])
 
-p=(plotnine.ggplot(merged_two.loc[(merged_two.biomass_A>0)|(merged_two.biomass_B>0)])+\
+fig, p =(plotnine.ggplot(merged_two.loc[(merged_two.biomass_A>0)|(merged_two.biomass_B>0)])+\
     plotnine.geom_point(plotnine.aes(x="biomass_A",y="biomass_B",color="Latitude"))+
-    plotnine.geom_abline(plotnine.aes(slope=1,intercept=0)))
+    plotnine.geom_abline(plotnine.aes(slope=1,intercept=0))+ 
+    plotnine.xlab("Generalist-only") + plotnine.ylab("Generalist-Specialist")).draw(return_ggplot=True)
 
-plotnine.ggsave(filename=os.path.join(OUTPUTDIR,"merged_comparison.png"),plot=p)
+#plotnine.ggsave(filename=os.path.join(OUTPUTDIR,"merged_comparison.pdf"),plot=p)
+fig.savefig(os.path.join(OUTPUTDIR,"merged_comparison_hq.png"), dpi=300)
 
 merged_two.to_csv(os.path.join(OUTPUTDIR,"merged_scenarios.csv"))
 
@@ -112,9 +114,10 @@ merged_two.to_csv(os.path.join(OUTPUTDIR,"merged_scenarios_all.csv"))
 
 p=(plotnine.ggplot(merged_two_all.loc[(merged_two_all.biomass_A>0)|(merged_two_all.biomass_B>0)])+\
     plotnine.geom_point(plotnine.aes(x="biomass_A",y="biomass_B",color="Latitude"))+
-    plotnine.geom_abline(plotnine.aes(slope=1,intercept=0)))
+    plotnine.geom_abline(plotnine.aes(slope=1,intercept=0)) + 
+    plotnine.xlab("Generalist-only") + plotnine.ylab("Generalist-Specialist"))
 
-plotnine.ggsave(filename=os.path.join(OUTPUTDIR,"merged_comparison_all.png"),plot=p)
+plotnine.ggsave(filename=os.path.join(OUTPUTDIR,"merged_comparison_all.pdf"),plot=p)
 
 from matplotlib.backends.backend_pdf import PdfPages
 pp = PdfPages(os.path.join(OUTPUTDIR,"merged_map.pdf"))
@@ -146,7 +149,10 @@ x, y = m(for_plot.Longitude, for_plot.Latitude)
 colormesh = plt.scatter(x,y,
          color=cmap(norm(for_plot.biomass.values)),s=0.5)
 
-pp.savefig(fig)
+#plt.xlabel("x-label")
+#plt.ylabel("y-label")
+
+pp.savefig(fig,dpi=300)
 pp.close()
 plt.show()
 sm = matplotlib.cm.ScalarMappable(norm=norm, cmap=cmap)
